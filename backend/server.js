@@ -11,7 +11,7 @@ app.use(cors());
 const filePath = path.join("/tmp", "Billing_Software_Enquiry.xlsx");
 
 // Save Data to Excel
-app.post("/api/save-excel", (req, res) => {
+app.post("/save-excel", (req, res) => {
     const { businessName, ownerName, email, phone, whatsapp, businessType } = req.body;
 
     let workbook;
@@ -41,7 +41,7 @@ app.post("/api/save-excel", (req, res) => {
 });
 
 // Download Excel File
-app.get("/api/download-excel", (req, res) => {
+app.get("/download-excel", (req, res) => {
     if (!fs.existsSync(filePath)) {
         return res.status(404).json({ message: "File not found!" });
     }
